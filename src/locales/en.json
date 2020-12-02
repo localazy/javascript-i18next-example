@@ -1,0 +1,12 @@
+{
+  "calendar": "Calendar",
+  "fields": "Fields",
+  "today": "Today",
+  "events": "Events",
+  "noEvents": "No events yet",
+  "date": "Date",
+  "datetime": "Datetime",
+  "time": "Time",
+  "title": "Title",
+  "color": "Color"
+}
