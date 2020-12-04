@@ -6,6 +6,7 @@
     "files": "src/locales/en.json"         
   },
   "download": {
-    "files": "src/locales/${lang}.json"
+    "files": "src/locales/${lang}.json",
+    "metadataFileJs": "src/localazy-meta.js"
   }
 }
