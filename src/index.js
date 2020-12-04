@@ -12,6 +12,7 @@ console.log(getSupportedLangs())
 
 i18next.init({
   lng: 'en',
+  fallbackLng: 'en',
   debug: true,
   supportedLngs: getSupportedLangs(),
   resources:{
