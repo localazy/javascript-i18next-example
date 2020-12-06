@@ -15,7 +15,7 @@ const getKeyPlural = (key, count) => {
 }
 
 const p = getKeyPlural;
-let count = 10;
+let count = 0;
 
 const updateTranslatedContent = () => {
   document.querySelector("#content").innerHTML = getTranslatedContent();
@@ -29,10 +29,20 @@ const getTranslatedContent = () => {
           ${count}  ${i18next.t(p('color', count))}`;
 }
 
+const createLanguageSelector = () => {
+  let template = '<select id="selector">';
+  LocalazyMeta.languages.forEach(l=>{
+    template+=`<option value="${l.language}">${l.localizedName}</option>`
+  })
+  template +='</select>';
+  return template; 
+}
+
 const createPageContent = () => {
-  document.querySelector("#app").innerHTML = `
+  document.querySelector("#app").innerHTML = `  
+  ${createLanguageSelector()} 
   <input id="count" type="number" placeholder="count" value="${count}" min="0"/>
-  <div id="content">
+  <div id="content">  
     ${getTranslatedContent()}
   </div>`;
 
@@ -41,6 +51,11 @@ const createPageContent = () => {
       count = e.target.value;
       updateTranslatedContent();
     }
+  })
+
+  document.querySelector("#selector").addEventListener("change",(e)=>{
+    i18next.changeLanguage(e.target.value);
+    updateTranslatedContent();
   })
 }
 
