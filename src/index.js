@@ -3,26 +3,27 @@ import LocalazyMeta from './localazy-meta';
 import enJson from "./locales/en.json";
 import frJson from "./locales/fr.json";
 
-const getSupportedLangs = ()=>{
-  return LocalazyMeta.languages.map(l=>l.language)
+const getSupportedLangs = () => {
+  return LocalazyMeta.languages.map(l => l.language)
 }
 
-
-console.log(getSupportedLangs())
+const updateHtmlContent = () => {
+  document.querySelector("#app").innerHTML = i18next.t('fields');
+}
 
 i18next.init({
   lng: 'en',
   fallbackLng: 'en',
   debug: true,
   supportedLngs: getSupportedLangs(),
-  resources:{
+  resources: {
     en: {
       translation: enJson,
     },
     fr: {
       translation: frJson,
-    },    
+    },
   },
 }, function (err, t) {
-  document.querySelector("#app").innerHTML = i18next.t('fields');
+  updateHtmlContent()
 });

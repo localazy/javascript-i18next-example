@@ -1,12 +1,27 @@
 {
-  "calendar" : "Kalendář",
-  "color" : "Barva",
-  "date" : "Datum",
-  "datetime" : "Datetime",
-  "events" : "Události",
-  "fields" : "Fields",
-  "noEvents" : "No events yet",
-  "time" : "Čas",
-  "title" : "Název",
-  "today" : "Dnes"
+  "calendar" : {
+    "one" : "Kalendář",
+    "few" : "Kalendáře",
+    "other" : "Kalendářů"
+  },
+  "color" : {
+    "one" : "Barva",
+    "few" : "Barvy",
+    "other" : "Barev"
+  },
+  "events" : {
+    "one" : "Událost",
+    "few" : "Události",
+    "other" : "Událostí"
+  },
+  "fields" : {
+    "one" : "Pole",
+    "few" : "Pole",
+    "other" : "Pole"
+  },
+  "title" : {
+    "one" : "Název",
+    "few" : "Názvy",
+    "other" : "Názvů"
+  }
 }

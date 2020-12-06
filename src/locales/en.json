@@ -1,12 +1,22 @@
 {
-  "calendar": "Calendar",
-  "fields": "Fields",
-  "today": "Today",
-  "events": "Events",
-  "noEvents": "No events yet",
-  "date": "Date",
-  "datetime": "Datetime",
-  "time": "Time",
-  "title": "Title",
-  "color": "Color"
+  "calendar": {
+    "one": "Calendar",
+    "other": "Calendars"
+  },
+  "fields": {
+    "one": "Field",
+    "other": "Fields"
+  },
+  "title": {
+    "one": "Title",
+    "other": "Titles"
+  },
+  "events": {
+    "one": "Event",
+    "other": "Events"
+  },
+  "color": {
+    "one": "Color",
+    "other": "Colors"
+  }
 }

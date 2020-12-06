@@ -3,7 +3,8 @@
   "readKey": "a8831902064739614646-bad1ac572891eaaabad798f175fe1adf6b1a3efee5334e25ff2916a6a059c123",
   "upload": {  
     "type": "json",
-    "files": "src/locales/en.json"         
+    "features": ["plural_object"],
+    "files": "src/locales/en.json"     
   },
   "download": {
     "files": "src/locales/${lang}.json",
