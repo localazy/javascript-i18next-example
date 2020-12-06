@@ -3,7 +3,7 @@
     "one": "Calendar",
     "other": "Calendars"
   },
-  "fields": {
+  "field": {
     "one": "Field",
     "other": "Fields"
   },
@@ -11,7 +11,7 @@
     "one": "Title",
     "other": "Titles"
   },
-  "events": {
+  "event": {
     "one": "Event",
     "other": "Events"
   },

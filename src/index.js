@@ -15,9 +15,33 @@ const getKeyPlural = (key, count) => {
 }
 
 const p = getKeyPlural;
+let count = 10;
 
-const updateHtmlContent = () => {
-  document.querySelector("#app").innerHTML = i18next.t(p('calendar', 2));
+const updateTranslatedContent = () => {
+  document.querySelector("#content").innerHTML = getTranslatedContent();
+}
+
+const getTranslatedContent = () => {
+  return `${count}  ${i18next.t(p('calendar', count))}<br>
+          ${count}  ${i18next.t(p('field', count))}<br>
+          ${count}  ${i18next.t(p('event', count))}<br>
+          ${count}  ${i18next.t(p('title', count))}<br>
+          ${count}  ${i18next.t(p('color', count))}`;
+}
+
+const createPageContent = () => {
+  document.querySelector("#app").innerHTML = `
+  <input id="count" type="number" placeholder="count" value="${count}" min="0"/>
+  <div id="content">
+    ${getTranslatedContent()}
+  </div>`;
+
+  document.querySelector("#count").addEventListener("input", (e) => {
+    if (e.target.value) {
+      count = e.target.value;
+      updateTranslatedContent();
+    }
+  })
 }
 
 i18next.init({
@@ -37,5 +61,5 @@ i18next.init({
     },
   },
 }, function (err, t) {
-  updateHtmlContent()
+  createPageContent()
 });

@@ -7,11 +7,11 @@
     "one" : "Couleur",
     "other" : "Couleurs"
   },
-  "events" : {
+  "event" : {
     "one" : "Événement",
     "other" : "Événements"
   },
-  "fields" : {
+  "field" : {
     "one" : "Champ",
     "other" : "Champs"
   },

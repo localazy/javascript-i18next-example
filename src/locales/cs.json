@@ -9,12 +9,12 @@
     "few" : "Barvy",
     "other" : "Barev"
   },
-  "events" : {
+  "event" : {
     "one" : "Událost",
     "few" : "Události",
     "other" : "Událostí"
   },
-  "fields" : {
+  "field" : {
     "one" : "Pole",
     "few" : "Pole",
     "other" : "Polí"
