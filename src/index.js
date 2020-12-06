@@ -1,24 +1,15 @@
 import i18next from "i18next";
-import LocalazyMeta from './localazy-meta';
-import enJson from "./locales/en.json";
-import frJson from "./locales/fr.json";
-import csJson from "./locales/cs.json";
+import { initI18n, getLanguages, getCurrentLanguage, getKeyPlural as p } from "./i18n";
 
-const getSupportedLangs = () => {
-  return LocalazyMeta.languages.map(l => l.language)
-}
-
-const getKeyPlural = (key, count) => {
-  const currentLanguage = LocalazyMeta.languages.find(l => l.language === i18next.language);
-  const pluralType = currentLanguage.pluralType(count);
-  return `${key}.${pluralType}`;
-}
-
-const p = getKeyPlural;
 let count = 0;
 
-const updateTranslatedContent = () => {
-  document.querySelector("#content").innerHTML = getTranslatedContent();
+const createLanguageSelector = () => {
+  let template = '<select id="selector">';
+  getLanguages().forEach(l => {
+    template += `<option ${l.language === getCurrentLanguage()?'selected':''} value="${l.language}">${l.localizedName}</option>`
+  })
+  template += '</select>';
+  return template;
 }
 
 const getTranslatedContent = () => {
@@ -29,13 +20,8 @@ const getTranslatedContent = () => {
           ${count}  ${i18next.t(p('color', count))}`;
 }
 
-const createLanguageSelector = () => {
-  let template = '<select id="selector">';
-  LocalazyMeta.languages.forEach(l=>{
-    template+=`<option value="${l.language}">${l.localizedName}</option>`
-  })
-  template +='</select>';
-  return template; 
+const updateTranslatedContent = () => {
+  document.querySelector("#content").innerHTML = getTranslatedContent();
 }
 
 const createPageContent = () => {
@@ -53,28 +39,10 @@ const createPageContent = () => {
     }
   })
 
-  document.querySelector("#selector").addEventListener("change",(e)=>{
+  document.querySelector("#selector").addEventListener("change", (e) => {
     i18next.changeLanguage(e.target.value);
     updateTranslatedContent();
   })
 }
 
-i18next.init({
-  lng: 'cs',
-  fallbackLng: 'en',
-  debug: true,
-  supportedLngs: getSupportedLangs(),
-  resources: {
-    en: {
-      translation: enJson,
-    },
-    fr: {
-      translation: frJson,
-    },
-    cs: {
-      translation: csJson,
-    },
-  },
-}, function (err, t) {
-  createPageContent()
-});
+initI18n(createPageContent);
