@@ -1,5 +1,4 @@
-import i18next from "i18next";
-import { initI18n, getLanguages, getCurrentLanguage, getKeyPlural as p } from "./i18n";
+import { i18n, initI18n, getLanguages, getCurrentLanguage, getKeyPlural as p } from "./i18n";
 
 let count = 0;
 
@@ -13,11 +12,11 @@ const createLanguageSelector = () => {
 }
 
 const getTranslatedContent = () => {
-  return `${count}  ${i18next.t(p('calendar', count))}<br>
-          ${count}  ${i18next.t(p('field', count))}<br>
-          ${count}  ${i18next.t(p('event', count))}<br>
-          ${count}  ${i18next.t(p('title', count))}<br>
-          ${count}  ${i18next.t(p('color', count))}`;
+  return `${count}  ${i18n.t(p('calendar', count))}<br>
+          ${count}  ${i18n.t(p('field', count))}<br>
+          ${count}  ${i18n.t(p('event', count))}<br>
+          ${count}  ${i18n.t(p('title', count))}<br>
+          ${count}  ${i18n.t(p('color', count))}`;
 }
 
 const updateTranslatedContent = () => {
@@ -40,7 +39,7 @@ const createPageContent = () => {
   })
 
   document.querySelector("#selector").addEventListener("change", (e) => {
-    i18next.changeLanguage(e.target.value);
+    i18n.changeLanguage(e.target.value);
     updateTranslatedContent();
   })
 }

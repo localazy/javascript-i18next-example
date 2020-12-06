@@ -4,6 +4,8 @@ import enJson from "./locales/en.json";
 import frJson from "./locales/fr.json";
 import csJson from "./locales/cs.json";
 
+export const i18n = i18next;
+
 export const getSupportedLangs = () => {
   return LocalazyMeta.languages.map(l => l.language)
 }
