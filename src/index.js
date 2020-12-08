@@ -1,4 +1,6 @@
-import { i18n, initI18n, getLanguages, getCurrentLanguage } from "./i18n";
+import { i18n, initI18n, getLanguages, getCurrentLanguage, getKeyPlural as p } from "./i18n";
+
+let count = 0;
 
 const createLanguageSelector = () => {
   let template = '<select id="selector">';
@@ -13,7 +15,12 @@ const createLanguageSelector = () => {
 }
 
 const getTranslatedContent = () => {
-  return i18n.t("hello_localazy");
+  return `${i18n.t("hello_localazy")}<br><br>
+          ${count}  ${i18n.t(p("calendar", count))}<br>
+          ${count}  ${i18n.t(p("field", count))}<br>
+          ${count}  ${i18n.t(p("event", count))}<br>
+          ${count}  ${i18n.t(p("title", count))}<br>
+          ${count}  ${i18n.t(p("color", count))}`;
 }
 
 const updateTranslatedContent = () => {
@@ -23,6 +30,7 @@ const updateTranslatedContent = () => {
 const initPageContent = () => {
   document.querySelector("#app").innerHTML = `  
   ${createLanguageSelector()}   
+  <input id="count" type="number" placeholder="count" value="${count}" min="0"/>
   <div id="content">  
     ${getTranslatedContent()}
   </div>`;
@@ -30,6 +38,13 @@ const initPageContent = () => {
   document.querySelector("#selector").addEventListener("change", (e) => {
     i18n.changeLanguage(e.target.value);
     updateTranslatedContent();
+  })
+
+  document.querySelector("#count").addEventListener("input", (e) => {
+    if (e.target.value) {
+      count = e.target.value;
+      updateTranslatedContent();
+    }
   })
 }
 
