@@ -17,7 +17,6 @@ export const getCurrentLanguage = () => {
 export const getKeyPlural = (key, count) => {    
   const currentLanguage = LocalazyMeta.languages.find(l => l.language === i18next.language);
   const pluralType = currentLanguage.pluralType(+count);
-  console.log(pluralType)  
   return `${key}.${pluralType}`;
 }
 
