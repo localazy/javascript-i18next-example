@@ -6,13 +6,18 @@ import csJson from "./locales/cs.json";
 
 export const i18n = i18next;
 
-export const getSupportedLangs = () => {
+export const getSupportedLangCodes = () => {
   return LocalazyMeta.languages.map(l => l.language)
+}
+
+export const getBaseLanguage = () => {
+  return LocalazyMeta.baseLocale;
 }
 
 export const getCurrentLanguage = () => {
   return window.localStorage.i18nextLng || 'en';
 }
+
 
 export const getKeyPlural = (key, count) => {    
   const currentLanguage = LocalazyMeta.languages.find(l => l.language === i18next.language);
@@ -26,10 +31,10 @@ export const getLanguages = ()=>{
 
 export const initI18n = (callback) => {
   i18next.init({
-    lng: 'en',
-    fallbackLng: 'en',
+    lng: getBaseLanguage(),
+    fallbackLng: getBaseLanguage(),
     debug: true,
-    supportedLngs: getSupportedLangs(),
+    supportedLngs: getSupportedLangCodes(),
     resources: {
       en: {
         translation: enJson,
